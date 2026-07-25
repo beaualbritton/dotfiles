@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -u
+
+socket="${XDG_RUNTIME_DIR}/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock"
+
+while [[ ! -S "$socket" ]]; do
+    sleep 0.25
+done
+
+"${HOME}/.local/bin/hypr-display-profile"
+
+while true; do
+    socat -U - "UNIX-CONNECT:${socket}" 2>/dev/null |
+        while IFS= read -r event; do
+            case "$event" in
+                monitoradded*|monitorremoved*)
+                    "${HOME}/.local/bin/hypr-display-profile"
+                    ;;
+            esac
+        done
+    sleep 1
+done
+
