@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Let Hyprland finish creating outputs and loading the wallpaper before the
+# lock surface captures the session.
+sleep 2
+
+if ! pgrep -x hyprlock >/dev/null 2>&1; then
+    exec hyprlock --grace 0
+fi
+
