@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+config="${HOME}/.config/waybar/config.jsonc"
+style="${HOME}/.config/waybar/style.css"
+log_dir="${HOME}/.cache/everforest"
+log_file="${log_dir}/waybar.log"
+
+mkdir -p "$log_dir"
+
+start_waybar() {
+    # In some sessions Waybar can be launched before the compositor's
+    # portal/output state is ready, leaving a process with no layer surface.
+    sleep 2
+    pkill -x waybar 2>/dev/null || true
+    setsid -f waybar -c "$config" -s "$style" -l info >"$log_file" 2>&1
+}
+
+if [[ ${1:-} == "--start" ]]; then
+    start_waybar
+    exit 0
+fi
+
+if pgrep -x waybar >/dev/null 2>&1 &&
+    hyprctl layers 2>/dev/null | grep -q "namespace: waybar"; then
+    pkill -USR1 -x waybar
+else
+    start_waybar
+fi
