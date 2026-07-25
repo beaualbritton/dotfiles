@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+hdmi_connected=false
+for status_file in /sys/class/drm/card*-HDMI-A-2/status; do
+    if [[ -r "$status_file" ]] && [[ $(<"$status_file") == connected ]]; then
+        hdmi_connected=true
+        break
+    fi
+done
+
+if "$hdmi_connected"; then
+    hyprctl keyword monitor "HDMI-A-2,1920x1080@100,0x0,1.25"
+    sleep 0.25
+    hyprctl keyword monitor "eDP-1,disable"
+else
+    hyprctl keyword monitor "eDP-1,1920x1080@60,0x0,1"
+fi
+
