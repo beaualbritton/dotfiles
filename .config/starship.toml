@@ -1,0 +1,84 @@
+# Minimal two-line Everforest Dark Hard prompt.
+add_newline = true
+command_timeout = 800
+palette = "everforest"
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$c\
+$lua\
+$python\
+${custom.godot}
+$character"""
+
+[palettes.everforest]
+bg_dim = "#1B1B1B"
+bg0_hard = "#1E2326"
+bg0 = "#272E33"
+bg1 = "#2E383C"
+bg2 = "#374145"
+fg = "#D3C6AA"
+red = "#E67E80"
+orange = "#E69875"
+yellow = "#DBBC7F"
+green = "#A7C080"
+aqua = "#83C092"
+blue = "#7FBBB3"
+purple = "#D699B6"
+
+[directory]
+format = "[$read_only]($read_only_style)[$path]($style) "
+style = "bold green"
+read_only = " 󰌾"
+read_only_style = "red"
+truncation_length = 4
+truncate_to_repo = false
+home_symbol = "~"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = " "
+style = "bold aqua"
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"
+style = "yellow"
+conflicted = "=${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+stashed = "󰏗${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "✘${count}"
+
+[c]
+format = "[$symbol($version )]($style)"
+symbol = " "
+style = "blue"
+
+[lua]
+format = "[$symbol($version )]($style)"
+symbol = " "
+style = "blue"
+
+[python]
+format = "[$symbol$pyenv_prefix($version )(\\($virtualenv\\) )]($style)"
+symbol = " "
+style = "yellow"
+
+[custom.godot]
+command = "printf 'Godot'"
+detect_files = ["project.godot"]
+format = "[$symbol$output ]($style)"
+symbol = " "
+style = "blue"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold aqua)"
