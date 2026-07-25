@@ -1,0 +1,18 @@
+/*
+ * Everforest Dark Hard — central GTK CSS palette.
+ * Only these colors and alpha variants are used by authored desktop CSS.
+ */
+@define-color bg_dim #1B1B1B;
+@define-color bg0_hard #1E2326;
+@define-color bg0 #272E33;
+@define-color bg1 #2E383C;
+@define-color bg2 #374145;
+@define-color fg #D3C6AA;
+@define-color red #E67E80;
+@define-color orange #E69875;
+@define-color yellow #DBBC7F;
+@define-color green #A7C080;
+@define-color aqua #83C092;
+@define-color blue #7FBBB3;
+@define-color purple #D699B6;
+
