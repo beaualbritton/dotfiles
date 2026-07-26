@@ -1,14 +1,16 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 42,
+    "height": 46,
     "margin-top": 8,
     "margin-left": 10,
     "margin-right": 10,
     "spacing": 6,
 
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/cava",
+        "mpris#spotify"
     ],
 
     "modules-center": [
@@ -104,6 +106,35 @@
         "scroll-step": 5,
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "tooltip-format": "{desc}"
+    },
+
+    "mpris#spotify": {
+        "player": "spotify",
+        "format": "{player_icon}  {dynamic}",
+        "format-paused": "{status_icon}  {dynamic}",
+        "player-icons": {
+            "spotify": ""
+        },
+        "status-icons": {
+            "paused": ""
+        },
+        "dynamic-order": [
+            "title",
+            "artist"
+        ],
+        "dynamic-len": 30,
+        "tooltip-format": "{title}\n{artist} — {album}",
+        "on-click": "playerctl --player=spotify play-pause",
+        "on-click-right": "playerctl --player=spotify next",
+        "on-scroll-up": "playerctl --player=spotify next",
+        "on-scroll-down": "playerctl --player=spotify previous"
+    },
+
+    "custom/cava": {
+        "exec": "~/.local/bin/waybar-cava",
+        "return-type": "json",
+        "restart-interval": 1,
+        "tooltip": false
     },
 
     "backlight": {

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -u
+
+config="${HOME}/.config/cava/waybar.conf"
+icons=("▁" "▂" "▃" "▄" "▅" "▆" "▇" "█")
+colors=("#7FBBB3" "#7FBBB3" "#83C092" "#83C092" "#A7C080" "#DBBC7F" "#E69875" "#D699B6")
+frame=0
+spotify_open=false
+
+cava -p "$config" 2>/dev/null | while IFS=';' read -r -a levels; do
+    if (( frame % 12 == 0 )); then
+        if playerctl --list-all 2>/dev/null | grep -qx spotify; then
+            spotify_open=true
+        else
+            spotify_open=false
+        fi
+    fi
+    ((frame++))
+
+    if [[ $spotify_open == false ]]; then
+        printf '{"text":"","class":"inactive"}\n'
+        continue
+    fi
+
+    spectrum=""
+    for level in "${levels[@]}"; do
+        [[ $level =~ ^[0-7]$ ]] || level=0
+        spectrum+="<span foreground='${colors[$level]}'>${icons[$level]}</span>"
+    done
+    printf '{"text":"%s","class":"active"}\n' "$spectrum"
+done

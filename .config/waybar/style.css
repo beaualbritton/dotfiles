@@ -5,7 +5,7 @@
     border-radius: 0;
     min-height: 0;
     font-family: "CaskaydiaMono Nerd Font Mono";
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -31,6 +31,8 @@ tooltip label {
 #memory,
 #network,
 #battery,
+#custom-cava,
+#mpris,
 #pulseaudio,
 #backlight {
     background: alpha(@bg0, 0.82);
@@ -52,6 +54,7 @@ tooltip label {
     margin: 4px 1px;
     padding: 0 8px;
     transition: all 180ms ease;
+    font-size: 18px;
 }
 
 #workspaces button.active {
@@ -106,6 +109,20 @@ tooltip label {
     color: @red;
 }
 
+#mpris {
+    color: @green;
+}
+
+#custom-cava {
+    color: @aqua;
+    font-size: 19px;
+    padding: 0 14px;
+}
+
+#mpris.paused {
+    color: alpha(@fg, 0.65);
+}
+
 #pulseaudio {
     color: @purple;
 }
@@ -117,4 +134,3 @@ tooltip label {
 #backlight {
     color: @yellow;
 }
-
