@@ -3,52 +3,74 @@
 * {
     font-family: "CaskaydiaMono Nerd Font Mono";
     font-size: 14px;
+    outline: none;
 }
 
 window {
-    background: alpha(@bg0_hard, 0.92);
-    border: 1px solid alpha(@green, 0.72);
+    background-color: transparent;
+    border: none;
     border-radius: 16px;
-    color: @fg;
+    color: #DBBC7F;
 }
 
 #outer-box {
-    margin: 12px;
+    background-color: rgba(30, 35, 38, 0.88);
+    border: 2px solid rgba(167, 192, 128, 0.93);
+    border-radius: 16px;
+    padding: 12px;
 }
 
 #input {
-    background: alpha(@bg1, 0.90);
-    border: 1px solid @bg2;
-    border-radius: 11px;
-    color: @fg;
-    margin-bottom: 10px;
-    padding: 10px 12px;
+    background-color: rgba(39, 46, 51, 0.88);
+    border: 1px solid rgba(167, 192, 128, 0.65);
+    border-radius: 12px;
+    color: #DBBC7F;
+    margin-bottom: 12px;
+    padding: 11px 14px;
+    caret-color: #83C092;
 }
 
 #input:focus {
-    border-color: @green;
+    background-color: rgba(46, 56, 60, 0.94);
+    border-color: #A7C080;
 }
 
-#scroll {
-    margin-top: 2px;
-}
-
-#entry {
-    border-radius: 10px;
-    color: @fg;
-    padding: 8px 10px;
-}
-
-#entry:selected {
-    background: alpha(@green, 0.18);
-    color: @fg;
-}
-
-#img {
+#input image {
+    color: #A7C080;
     margin-right: 10px;
 }
 
-#text {
-    color: inherit;
+#scroll {
+    background: transparent;
 }
 
+#entry {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 11px;
+    color: #DBBC7F;
+    margin: 2px 0;
+    padding: 9px 11px;
+}
+
+#entry:selected {
+    background-color: rgba(167, 192, 128, 0.16);
+    border-color: rgba(167, 192, 128, 0.72);
+    color: #DBBC7F;
+}
+
+#img {
+    margin-right: 12px;
+}
+
+#text {
+    color: #DBBC7F;
+}
+
+#entry:selected #text {
+    color: #DBBC7F;
+}
+
+#entry expander {
+    color: #83C092;
+}
