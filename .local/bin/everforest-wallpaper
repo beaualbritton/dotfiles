@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-default_wallpaper="${HOME}/.config/everforest/wallpapers/fog-forest-1920x1080.png"
+default_wallpaper="${HOME}/.config/everforest/wallpapers/fish.png"
 wallpaper="${1:-$default_wallpaper}"
 
 if [[ ! -f "$wallpaper" ]]; then
@@ -27,4 +27,3 @@ exec swww img "$wallpaper" \
     --transition-type simple \
     --transition-duration 1 \
     --transition-fps 30
-
