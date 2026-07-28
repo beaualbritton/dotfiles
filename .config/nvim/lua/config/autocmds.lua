@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
             "   r   recent files          e   file explorer",
             "",
             "Tools",
-            "   m   Mason                  ?   keybinding guide",
+            "   m   Mason                 ?   keybinding guide",
             "   q   quit",
             "",
             "   ~/.config/nvim",
