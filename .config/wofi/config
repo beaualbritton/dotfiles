@@ -1,8 +1,8 @@
 show=drun
-width=560
-height=440
+width=600
+height=480
 location=center
-prompt=Applications
+prompt=Search applications…
 allow_images=true
 allow_markup=true
 insensitive=true
@@ -10,4 +10,3 @@ term=ghostty
 matching=fuzzy
 sort_order=alphabetical
 gtk_dark=true
-
